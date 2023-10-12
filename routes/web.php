@@ -34,5 +34,8 @@ Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->nam
 Route::patch('/tasks/{task}/incomplete', [TaskController::class, 'incomplete'])->name('tasks.incomplete');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
+Route::post('/tasks/{task}/upload', [TaskController::class, 'uploadImage']);
+
+
 
 

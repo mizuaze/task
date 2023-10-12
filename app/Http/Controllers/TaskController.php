@@ -88,4 +88,18 @@ class TaskController extends Controller
           $task->update(['status' => false]);
           return response()->json(['message' => 'Task marked as completed.']);
     }
+
+    public function uploadImage(Request $request, Task $task)
+    {
+      $request->validate([
+          'image' => 'required|image|mimes:jpeg,png|max:2048', // Validasi untuk jenis file gambar
+      ]);
+
+      $imageName = time().'.'.$request->image->extension();
+      $request->image->move(public_path('images/tasks'), $imageName);
+
+      $task->update(['image' => $imageName]);
+
+      return back()->with('success','Gambar berhasil diunggah.');
+    }
 }

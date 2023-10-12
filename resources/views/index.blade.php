@@ -8,23 +8,29 @@
     <table id="task-list" class="table table-bordered table-hover table-striped">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Nama Tugas</th>
-                <th>Deskripsi</th>
-                <th>Status</th>
-                <th>Ubah</th>
-                <th>Delete</th>
+                {{-- <th class='text-center'>No</th> --}}
+                <th class='text-center'>Nama Tugas</th>
+                <th class='text-center'>Deskripsi</th>
+                <th class='text-center'>Status</th>
+                <th class='text-center'>Ubah</th>
+                <th class='text-center'>Delete</th>
+                <th class='text-center'>Upload Img</th>
             </tr>
         </thead>
         <?php $i = 1; ?>
         @foreach($tasks as $task)
         <tbody>
-          <td>{{ $i }}</td>
-          <td><span class="task-name">{{ $task->name }}</span></td>
-          <td><span class="task-description">{{ $task->description }}</span></td>
-          <td><span class="{{ $task->id.'-task-status' }}">{{ $task->status ? 'Selesai' : 'Belum Selesai' }}</span></td>
-          <td><button id='mark-complete' class="{{ $task->id.'-mark-complete' }}" data-task-id="{{ $task->id }}" data-task-status="{{ $task->status }}">UbahStatus</button></td>
-          <td><button class="delete-task" data-task-id="{{ $task->id }}">Hapus</button></td>
+          {{-- <td class='text-center'>{{ $i }}</td> --}}
+          <td class='text-center'><span class="task-name">{{ $task->name }}</span></td>
+          <td class='text-center'><span class="task-description">{{ $task->description }}</span></td>
+          <td class='text-center'><span class="{{ $task->id.'-task-status' }}">{{ $task->status ? 'Selesai' : 'Belum Selesai' }}</span></td>
+          <td class='text-center'><button id='mark-complete' class="{{ $task->id.'-mark-complete' }}" data-task-id="{{ $task->id }}" data-task-status="{{ $task->status }}">UbahStatus</button></td>
+          <td class='text-center'><button class="delete-task" data-task-id="{{ $task->id }}">Hapus</button></td>
+          <td class='text-center'><form action="/tasks/{{ $task->id }}/upload" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="image" accept="image/jpeg, image/png">
+            <button type="submit" class="btn btn-primary">Unggah Gambar</button>
+          </form></td>
         </tbody>
         <?php $i++; ?>
         @endforeach

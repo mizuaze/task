@@ -13,6 +13,7 @@ class Task extends Model
         'description',
         'status',
         'user_id',
+        'image',
     ];
     public function user()
     {
