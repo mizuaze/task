@@ -13,7 +13,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = auth()->user()->tasks; // Ambil tugas dari pengguna yang sedang login
-        return view('tasks.index', compact('tasks'));
+        return view('index', compact('tasks'));
     }
 
     /**
@@ -71,8 +71,21 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+       $task->delete();
+       return response()->json(['message' => 'Task deleted.']);
+    }
+
+    public function complete(Task $task)
+    {
+          $task->update(['status' => true]);
+          return response()->json(['message' => 'Task marked as completed.']);
+    }
+    
+    public function incomplete(Task $task)
+    {
+          $task->update(['status' => false]);
+          return response()->json(['message' => 'Task marked as completed.']);
     }
 }
