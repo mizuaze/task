@@ -70,7 +70,7 @@ class AuthController extends Controller
        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
-            return redirect()->intended('dashboard'); // Ganti dengan rute tujuan setelah login
+            return redirect()->intended('tasks'); // Ganti dengan rute tujuan setelah login
         }
 
         return back()->withErrors([

@@ -12,7 +12,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = auth()->user()->tasks; // Ambil tugas dari pengguna yang sedang login
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -34,13 +35,13 @@ class TaskController extends Controller
         ]);
 
         Task::create([
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
+            'name' => $request->nama,
+            'description' => $request->deskripsi,
             'status' => false, // Menentukan default status
             'user_id' => auth()->id(), // Jika terkait dengan pengguna tertentu
         ]);
 
-        return redirect()->route('tasks.index')->with('success', 'Tugas baru berhasil ditambahkan!');
+        return redirect()->route('tasks')->with('success', 'Tugas baru berhasil ditambahkan!');
     }
 
     /**

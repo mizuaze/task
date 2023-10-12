@@ -1,6 +1,15 @@
 @extends('layouts.main')
 @section('container')
  <div class="container">
+   @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <h1>Tambah Tugas Baru</h1>
         <form action="{{ route('tasks.store') }}" method="POST">
             @csrf
