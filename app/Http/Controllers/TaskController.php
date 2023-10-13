@@ -13,7 +13,9 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = auth()->user()->tasks; // Ambil tugas dari pengguna yang sedang login
-        return view('index', compact('tasks'));
+        return view('index', compact('tasks'),[
+          "title" => 'Daftar Task',
+        ]);
     }
 
     /**
@@ -21,7 +23,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('add');
+        return view('add',[
+          "title" => 'Tambah Task',
+        ]);
     }
 
     /**

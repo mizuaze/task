@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
   <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
 
-    <div class="card" style="width: 30rem;">
+    <div class="card" style="width: 25rem;">
     <div class="card-body">
     <div class="row text-center">
       <h2>Register</h2>
     </div>
     <div class="row">
     @if ($errors->any())
-        <div>
+        <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -49,7 +49,10 @@
         </div>
 
         <div class="row mt-2">
-            <button type="submit">Register:</button>
+            <button type="submit">Register</button>
+        </div>
+        <div class="row text-center mt-2">
+          <div class="col-12">Sudah memiliki akun?</div> <div class="col-12"><a href="http://coba-laravel.test/login">Login Sekarang</a></div>
         </div>
     </form>
     </div>

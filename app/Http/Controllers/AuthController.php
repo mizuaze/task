@@ -16,7 +16,9 @@ class AuthController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.register',[
+          "title" => 'Form Register',
+        ]);
     }
 
     /**
@@ -51,7 +53,9 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login',[
+          "title" => 'Form Login',
+        ]);
     }
 
     /**
@@ -92,6 +96,6 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+      return redirect()->route('login');
     }
 }

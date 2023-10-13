@@ -25,11 +25,11 @@ Route::post('/register', [AuthController::class, 'register']);
 // Otentikasi
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('/tasks/add', [TaskController::class, 'create'])->name('tasks');
+Route::get('/tasks/add', [TaskController::class, 'create'])->name('tasks')->middleware('auth');
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index')->middleware('auth');
 Route::patch('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
 Route::patch('/tasks/{task}/incomplete', [TaskController::class, 'incomplete'])->name('tasks.incomplete');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');

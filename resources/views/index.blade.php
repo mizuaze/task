@@ -4,6 +4,18 @@
 @csrf
 
     <h1>Daftar Tugas</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
     <a href='http://coba-laravel.test/tasks/add' class="btn btn-primary mb-2">Tambah+</a>
     <table id="task-list" class="table table-bordered table-hover table-striped">
         <thead>
@@ -14,7 +26,7 @@
                 <th class='text-center'>Status</th>
                 <th class='text-center'>Ubah</th>
                 <th class='text-center'>Delete</th>
-                <th class='text-center'>Upload Img</th>
+                <th class='text-center'>Upload Image</th>
             </tr>
         </thead>
         <?php $i = 1; ?>

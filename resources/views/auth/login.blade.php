@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
@@ -16,7 +16,7 @@
     </div>
     <div class="row">
     @if ($errors->any())
-        <div>
+        <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -40,6 +40,9 @@
 
         <div class="row mt-2">
             <button type="submit">Login</button>
+        </div>
+        <div class="row text-center mt-2">
+          <div class="col-12">Belum memiliki akun?</div> <div class="col-12"><a href="http://coba-laravel.test/register">Daftar Sekarang</a></div>
         </div>
     </form>
     </div>
