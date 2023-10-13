@@ -28,6 +28,7 @@
   </div>
     @yield('scripts')
     <script>
+      // Logout Script
       document.getElementById('logout').addEventListener('click', function(e) {
           e.preventDefault(); // Mencegah aksi default (navigasi)
 
